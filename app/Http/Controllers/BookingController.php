@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Booking;
 
 use Illuminate\Http\Request;
 
@@ -21,6 +22,15 @@ class BookingController extends Controller
     public function create()
     {
         //
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -31,9 +41,9 @@ class BookingController extends Controller
         $booking = Booking::create($validatedData);
 
         return response()->json($booking, 201);
+
     }
 
-    
     /**
      * Display the specified resource.
      */
